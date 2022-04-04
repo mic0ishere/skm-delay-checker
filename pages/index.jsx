@@ -1,89 +1,42 @@
-import Head from 'next/head'
-import { Container, Row, Card, Button } from 'react-bootstrap'
+import { Children } from "react";
+import { useRouter } from "next/router";
+import { Container, Dropdown } from "react-bootstrap";
+
+import { CustomMenu, DropdownItem } from "../components/Dropdown";
+import skmStations from "../public/skmStations.json";
+import Footer from "../components/Footer";
 
 export default function Home() {
+  const router = useRouter();
+
+  const popularStationsIDs = ["5942", "5967", "7567", "5918", "6031"];
+  const popularStations = skmStations.filter((x) =>
+    popularStationsIDs.includes(x.id)
+  );
+
   return (
     <Container className="md-container">
-      <Head>
-        <title>ReactJS with react-bootstrap</title>
-        <link rel="icon" href="/favicon-32x32.png" />
-      </Head>
       <Container>
-        <h1>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <h1>Welcome to SKM Delay Checker</h1>
         <p>
-          Get started by editing <code>pages/index.js</code>
+          Get started by typing in station name or selecting one from the list
         </p>
-        <Container>
-          <Row className="justify-content-md-between">
-            <Card className="sml-card">
-              <Card.Body>
-                <Card.Title>Documentation</Card.Title>
-                <Card.Text>
-                  Find in-depth information about Next.js features and API.
-                </Card.Text>
-                <Button variant="primary" href="https://nextjs.org/docs">
-                  More &rarr;
-                </Button>
-              </Card.Body>
-            </Card>
-            <Card className="sml-card">
-              <Card.Body>
-                <Card.Title>Learn</Card.Title>
-                <Card.Text>
-                  Learn about Next.js in an interactive course with quizzes!
-                </Card.Text>
-                <Button variant="primary" href="https://nextjs.org/learn">
-                  More &rarr;
-                </Button>
-              </Card.Body>
-            </Card>
-          </Row>
-          <Row className="justify-content-md-between">
-            <Card className="sml-card">
-              <Card.Body>
-                <Card.Title>Examples</Card.Title>
-                <Card.Text>
-                  Discover and deploy boilerplate example Next.js projects.
-                </Card.Text>
-                <Button
-                  variant="primary"
-                  href="https://github.com/vercel/next.js/tree/canary/examples"
-                >
-                  More &rarr;
-                </Button>
-              </Card.Body>
-            </Card>
-            <Card className="sml-card">
-              <Card.Body>
-                <Card.Title>Deploy</Card.Title>
-                <Card.Text>
-                  Instantly deploy your Next.js site to a public URL with
-                  Vercel.
-                </Card.Text>
-                <Button
-                  variant="primary"
-                  href="https://vercel.com/new?utm_source=github&utm_medium=example&utm_campaign=next-example"
-                >
-                  More &rarr;
-                </Button>
-              </Card.Body>
-            </Card>
-          </Row>
-        </Container>
+        <Dropdown as={CustomMenu} sm={10} className="mr-2 w-full">
+          <Dropdown.Header className="px-0">Popular</Dropdown.Header>
+          {Children.toArray(
+            popularStations.map((station) => (
+              <DropdownItem station={station} router={router} popular />
+            ))
+          )}
+          <Dropdown.Divider />
+          {Children.toArray(
+            skmStations.map((station) => (
+              <DropdownItem station={station} router={router} />
+            ))
+          )}
+        </Dropdown>
       </Container>
-
-      <footer className="cntr-footer">
-        <a
-          href="https://vercel.com?filter=next.js&utm_source=github&utm_medium=example&utm_campaign=next-example"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="sml-logo" />
-        </a>
-      </footer>
+      <Footer />
     </Container>
-  )
+  );
 }
