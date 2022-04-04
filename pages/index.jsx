@@ -9,7 +9,7 @@ import Footer from "../components/Footer";
 export default function Home() {
   const router = useRouter();
 
-  const popularStationsIDs = ["5942", "5967", "7567", "5918", "6031"];
+  const popularStationsIDs = ["5942", "5967", "7567", "5918", "6031", "6106"];
   const popularStations = skmStations.filter((x) =>
     popularStationsIDs.includes(x.id)
   );
