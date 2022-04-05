@@ -5,7 +5,7 @@ function Table({ trains }) {
     ...x,
     realDeparture: new Date(
       new Date(x.departure.real).toLocaleString("en-US", {
-        timeZone: "Europe/London",
+        timeZone: "Europe/Warsaw",
       })
     ),
   }));
