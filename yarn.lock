@@ -1871,10 +1871,10 @@ inflight@^1.0.4:
     once "^1.3.0"
     wrappy "1"
 
-infopasazer-wrapper@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/infopasazer-wrapper/-/infopasazer-wrapper-1.0.1.tgz#3d528a342b46eb4ca8c15eb7aec15f95ff228c7a"
-  integrity sha512-bgNui7WZFTLM6CDg/S/i3g2Wbln1EyQ/fsrOj6Watb3JUwakSr1n8T+3yzi9yIePANY6mAk9FO/t7TTWJCxXDQ==
+infopasazer-wrapper@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/infopasazer-wrapper/-/infopasazer-wrapper-1.1.1.tgz#d4d25e63c46a1323d9f9f8cbc148315a858afecb"
+  integrity sha512-7karnFq6k9TXNGzGMB2argCNe+SL2H0tSr5WiaSMfdmbk5JS6VMIuqGUa9doBZXnpSSmNOsUACBIpn021Ym/UQ==
   dependencies:
     cheerio "^1.0.0-rc.10"
     node-fetch "^3.2.3"
