@@ -4,7 +4,7 @@ function Table({ trains }) {
   trains = trains.map((x) => ({
     ...x,
     realDeparture: new Date(
-      x.departure.real.toLocaleString("en-US", {
+      new Date(x.departure.real).toLocaleString("en-US", {
         timeZone: "Europe/Warsaw",
       })
     ),
@@ -26,7 +26,7 @@ function Table({ trains }) {
             <td className="col-sm-4">{train.route.start}</td>
             <td className="col-sm-4">{train.route.end}</td>
             <td className="col-sm-3">
-              {train.realDeparture.toLocaleTimeString(navigator.language, {
+              {train.realDeparture.toLocaleTimeString("pl-PL", {
                 hour: "2-digit",
                 minute: "2-digit",
               })}
