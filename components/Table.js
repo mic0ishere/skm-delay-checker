@@ -1,7 +1,22 @@
 import { Table as BootstrapTable } from "react-bootstrap";
 
 function Table({ trains }) {
-  console.log(new Date(trains[0].departure.real));
+  function changeTimezone(date, ianatz) {
+    const invdate = new Date(
+      date.toLocaleString("en-US", {
+        timeZone: ianatz,
+      })
+    );
+    const diff = date.getTime() - invdate.getTime();
+
+    return new Date(date.getTime() - diff);
+  }
+
+  const there = changeTimezone(
+    new Date(trains[0].departure.real),
+    "Europe/Warsaw"
+  );
+  console.log(there);
   return (
     <BootstrapTable striped bordered hover responsive="sm">
       <thead>
